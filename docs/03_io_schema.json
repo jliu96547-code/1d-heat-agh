@@ -1,0 +1,46 @@
+{
+  "task_input": {
+    "task": "solve_1d_heat",
+    "parameters": { "L": "number >0", "T": "number >0", "alpha": "number >0", "A": "number >0" },
+    "solver": { "method": "enum[FTCS, CrankNicolson]", "nx": "int >=2", "nt": "int >=2" },
+    "options": { "max_retry": "int >=0", "strict_mode": "bool" }
+  },
+  "solver_output": {
+    "status": "enum[success, rejected, unstable]",
+    "errors": "list[str]",
+    "r": "number (FTCS 稳定性参数 alpha*dt/dx^2)",
+    "x_grid": "list[float] (nx+1)",
+    "t_grid": "list[float] (nt+1)",
+    "u": "list[list[float]] (i=时间, j=空间)"
+  },
+  "analytical_output": {
+    "exact": "list[list[float]] (布局同 u)"
+  },
+  "validation_result": {
+    "max_abs_error": "number",
+    "l2_error": "number",
+    "relative_error": "number",
+    "boundary_dev": "number",
+    "boundary_ok": "bool",
+    "trend_ok": "bool",
+    "diverged": "bool",
+    "pass_max_abs": "bool",
+    "pass_l2": "bool",
+    "overall_pass": "bool"
+  },
+  "agnes_call": {
+    "task_understanding": { "in": "task_input", "out": { "feasible": "bool", "missing": "list[str]" } },
+    "param_suggestion": { "in": "parameters", "out": { "method": "string", "nx": "int", "nt": "int", "reason": "string" } },
+    "failure_diagnosis": { "in": "failure_log", "out": { "cause": "string", "retry": "bool", "action": "enum[retry, downgrade, terminate]" } },
+    "result_summary": { "in": "validation_result", "out": { "summary": "string" } }
+  },
+  "archive_report": {
+    "inputs": "dict",
+    "plan": "dict",
+    "results": "file paths",
+    "validation_report": "validation_result",
+    "run_log": "file path",
+    "final_summary": "string",
+    "reproducible_command": "string"
+  }
+}

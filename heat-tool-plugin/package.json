@@ -1,0 +1,19 @@
+{
+  "name": "heat-tool-plugin",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "exports": "./index.mjs",
+  "description": "AGH backend plugin exposing 1D heat-conduction solve / analytical / error-metric tools (delegates to Python, run as subprocess).",
+  "agnes": {
+    "plugins": [
+      {
+        "export": "heatToolPlugin",
+        "id": "ext:hackathon/heat-tool-plugin",
+        "inject": [
+          "extension"
+        ]
+      }
+    ]
+  }
+}

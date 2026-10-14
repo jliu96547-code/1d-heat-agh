@@ -1,0 +1,18 @@
+{
+  "task": "solve_1d_heat",
+  "parameters": {
+    "L": 1.0,
+    "T": 1.0,
+    "alpha": 0.1,
+    "A": 1.0
+  },
+  "solver": {
+    "method": "FTCS",
+    "nx": 20,
+    "nt": 200
+  },
+  "options": {
+    "max_retry": 3,
+    "strict_mode": false
+  }
+}
